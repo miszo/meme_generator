@@ -1,6 +1,6 @@
 <div>
-    <div ng-repeat="meme in $ctrl.memesList">
-        <meme-tile meme="meme"
+    <div ng-repeat="favMeme in $ctrl.favMemesList">
+        <meme-tile meme="favMeme"
                    on-add-click="$ctrl.onAddClick(id)"
                    on-remove-click="$ctrl.onRemoveClick(id)">
         </meme-tile>

@@ -8,6 +8,7 @@ angular
         <nav>
             <a ui-sref="home"> Home</a>
             <a ui-sref="memesList"> Memes list</a>
+            <a ui-sref="favMemesList"> Favourites Memes list</a>
         </nav>   
         <ui-view></ui-view>
     </div>
@@ -42,7 +43,14 @@ function config($stateProvider, $urlRouterProvider) {
       resolve: {
         memesList: (MemesService) => MemesService.getMemes()
       }
-    });
+    })
+    .state('favMemesList', {
+      url: '/favourites',
+      component: 'favMemesList',
+      resolve: {
+        favMemesList: (MemesService) => MemesService.getFavourites()
+      }
+    });;
 
   $urlRouterProvider.otherwise('/home');
 }

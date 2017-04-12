@@ -6,6 +6,18 @@ angular
     bindings: {
         memesList: '<'
     },
-    controller: function() {
-    }
+    controller: memesListCtrl
   });
+
+memesListCtrl.$inject = ['MemesService'];
+function memesListCtrl(MemesService) {
+  this.onAddClick = function(id) {
+    MemesService.addToFavourites(id);
+    console.log(MemesService.getFavourites());
+  }
+
+  this.onRemoveClick = function(id) {
+    MemesService.removeFromFavourites(id);
+    console.log(MemesService.getFavourites());
+  }
+}

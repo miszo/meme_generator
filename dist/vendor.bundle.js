@@ -949,17 +949,17 @@ exports.services = services;
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(__webpack_require__(66));
-__export(__webpack_require__(73));
-__export(__webpack_require__(74));
+__export(__webpack_require__(68));
 __export(__webpack_require__(75));
 __export(__webpack_require__(76));
 __export(__webpack_require__(77));
 __export(__webpack_require__(78));
 __export(__webpack_require__(79));
+__export(__webpack_require__(80));
+__export(__webpack_require__(81));
 __export(__webpack_require__(29));
 __export(__webpack_require__(34));
-__export(__webpack_require__(72));
+__export(__webpack_require__(74));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -4366,11 +4366,11 @@ exports.Transition = Transition;
 var interface_1 = __webpack_require__(11);
 var transition_1 = __webpack_require__(26);
 var hookRegistry_1 = __webpack_require__(25);
-var resolve_1 = __webpack_require__(69);
-var views_1 = __webpack_require__(71);
-var url_1 = __webpack_require__(70);
-var redirectTo_1 = __webpack_require__(68);
-var onEnterExitRetain_1 = __webpack_require__(67);
+var resolve_1 = __webpack_require__(71);
+var views_1 = __webpack_require__(73);
+var url_1 = __webpack_require__(72);
+var redirectTo_1 = __webpack_require__(70);
+var onEnterExitRetain_1 = __webpack_require__(69);
 var lazyLoad_1 = __webpack_require__(30);
 var transitionEventType_1 = __webpack_require__(41);
 var transitionHook_1 = __webpack_require__(13);
@@ -42829,7 +42829,9 @@ $provide.value("$locale", {
 /* 61 */,
 /* 62 */,
 /* 63 */,
-/* 64 */
+/* 64 */,
+/* 65 */,
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42844,8 +42846,8 @@ __webpack_require__(47);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 65 */,
-/* 66 */
+/* 67 */,
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42865,7 +42867,7 @@ __export(__webpack_require__(8));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42926,7 +42928,7 @@ exports.registerOnEnterHook = function (transitionService) {
 //# sourceMappingURL=onEnterExitRetain.js.map
 
 /***/ }),
-/* 68 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42968,7 +42970,7 @@ exports.registerRedirectToHook = function (transitionService) {
 //# sourceMappingURL=redirectTo.js.map
 
 /***/ }),
-/* 69 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43015,7 +43017,7 @@ exports.registerLazyResolveState = function (transitionService) {
 //# sourceMappingURL=resolve.js.map
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43045,7 +43047,7 @@ exports.registerUpdateUrl = function (transitionService) {
 //# sourceMappingURL=url.js.map
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43097,7 +43099,7 @@ exports.registerActivateViews = function (transitionService) {
 //# sourceMappingURL=views.js.map
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43122,7 +43124,7 @@ exports.UIRouterPluginBase = UIRouterPluginBase;
 //# sourceMappingURL=interface.js.map
 
 /***/ }),
-/* 73 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43137,7 +43139,7 @@ __export(__webpack_require__(23));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43151,7 +43153,7 @@ __export(__webpack_require__(16));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43166,7 +43168,7 @@ __export(__webpack_require__(17));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43184,7 +43186,7 @@ __export(__webpack_require__(6));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43215,7 +43217,7 @@ __export(__webpack_require__(27));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43231,7 +43233,7 @@ __export(__webpack_require__(45));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43243,4 +43245,4 @@ __export(__webpack_require__(46));
 //# sourceMappingURL=index.js.map
 
 /***/ })
-],[64]);
+],[66]);

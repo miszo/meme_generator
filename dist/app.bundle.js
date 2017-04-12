@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _memes = __webpack_require__(62);
+var _memes = __webpack_require__(64);
 
 Object.keys(_memes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22,7 +22,7 @@ Object.keys(_memes).forEach(function (key) {
   });
 });
 
-var _memes2 = __webpack_require__(63);
+var _memes2 = __webpack_require__(65);
 
 Object.keys(_memes2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -56,7 +56,7 @@ Object.keys(_memesList).forEach(function (key) {
 
 angular.module('app', ['ui.router', 'memesModule']).config(config).component('app', {
   selector: 'app',
-  template: '\n    <div>\n        <nav>\n            <a ui-sref="home"> home </a>\n            <a ui-sref="memesList"> List </a>\n        </nav>   \n        <ui-view></ui-view>\n    </div>\n    \n    \n    '
+  template: '\n    <div>\n        <nav>\n            <a ui-sref="home"> Home</a>\n            <a ui-sref="memesList"> Memes list</a>\n        </nav>   \n        <ui-view></ui-view>\n    </div>\n    \n    \n    '
 }).component('home', {
   selector: 'home',
   bindings: {
@@ -67,7 +67,7 @@ angular.module('app', ['ui.router', 'memesModule']).config(config).component('ap
 });
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
-function config($stateProvider, $urlRouteProvider) {
+function config($stateProvider, $urlRouterProvider) {
   $stateProvider.state('home', {
     url: '/home',
     component: 'home'
@@ -98,7 +98,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _memesList = __webpack_require__(61);
+var _memesList = __webpack_require__(63);
 
 Object.keys(_memesList).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -106,6 +106,18 @@ Object.keys(_memesList).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _memesList[key];
+    }
+  });
+});
+
+var _memeTile = __webpack_require__(61);
+
+Object.keys(_memeTile).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _memeTile[key];
     }
   });
 });
@@ -118,13 +130,20 @@ Object.keys(_memesList).forEach(function (key) {
 "use strict";
 
 
-angular.module('memesModule').component('memesList', {
-    selector: 'memes-list',
-    template: __webpack_require__(65),
-    bindings: {
-        memesList: '<'
-    },
-    controller: function controller() {}
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _memeTile = __webpack_require__(62);
+
+Object.keys(_memeTile).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _memeTile[key];
+    }
+  });
 });
 
 /***/ }),
@@ -135,11 +154,53 @@ angular.module('memesModule').component('memesList', {
 "use strict";
 
 
-angular.module('memesModule', []);
+angular.module('memesModule').component('memeTile', {
+  selector: 'meme-tile',
+  bindings: {
+    meme: '<'
+  },
+  template: '\n      <div>\n        <p>{{ $ctrl.meme.name }}</p>\n        <div ng-style="{\n                        \'background-image\': \'url(\' + $ctrl.meme.url + \')\',\n                        \'height\': $ctrl.meme.height + \'px\',\n                        \'width\': $ctrl.meme.width + \'px\'\n                      }"></div>\n                      <button ng-click="$ctrl.addToFavourites($ctrl.meme.id)">Add to favourites</button>\n      </div>',
+  controller: memeTileCtrl
+});
+
+memeTileCtrl.$inject = ['MemesService'];
+function memeTileCtrl(MemesService) {
+  this.addToFavourites = function (id) {
+    MemesService.addToFavourites(id);
+    console.log(MemesService.getFavourites());
+  };
+}
 
 /***/ }),
 
 /***/ 63:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+angular.module('memesModule').component('memesList', {
+  selector: 'memes-list',
+  template: __webpack_require__(67),
+  bindings: {
+    memesList: '<'
+  },
+  controller: function controller() {}
+});
+
+/***/ }),
+
+/***/ 64:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+angular.module('memesModule', []);
+
+/***/ }),
+
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -152,6 +213,7 @@ angular.module('memesModule').service('MemesService', memesService);
 memesService.$inject = ['$http', '$q'];
 function memesService($http, $q) {
   this.memesList = [];
+  this.favouritesList = [];
 
   this.getMemes = function () {
     var _this = this;
@@ -164,14 +226,35 @@ function memesService($http, $q) {
     });
     return this.memesList;
   };
+
+  this.addToFavourites = function (id) {
+    var idOnList = this.favouritesList.findIndex(function (fav) {
+      return fav === id;
+    });
+    if (idOnList === -1) {
+      this.favouritesList.push(id);
+    }
+    console.log(this.favouritesList);
+  };
+
+  this.getFavourites = function () {
+    var _this2 = this;
+
+    return this.memesList.filter(function (ele) {
+      var elementIndex = ele.id;
+      return _this2.favouritesList.findIndex(function (fav) {
+        return fav === elementIndex;
+      }) != -1;
+    });
+  };
 }
 
 /***/ }),
 
-/***/ 65:
+/***/ 67:
 /***/ (function(module, exports) {
 
-module.exports = "<div> {{ $ctrl.memesList}} </div> ";
+module.exports = "<div> <div ng-repeat=\"meme in $ctrl.memesList\"> <meme-tile meme=meme></meme-tile> </div> </div> ";
 
 /***/ })
 

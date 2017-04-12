@@ -3,7 +3,9 @@ angular
   .component('memeTile', {
     selector: 'meme-tile',
     bindings: {
-      meme: '<'
+      meme: '<',
+      onAddClick: '&',
+      onRemoveClick: '&'
     },
     template: `
       <div>
@@ -14,14 +16,17 @@ angular
                         'width': $ctrl.meme.width + 'px'
                       }"></div>
                       <button ng-click="$ctrl.addToFavourites($ctrl.meme.id)">Add to favourites</button>
+                      <button ng-click="$ctrl.removeFromFavourites($ctrl.meme.id)">Remove from favourites</button>
       </div>`,
     controller: memeTileCtrl
   });
 
-memeTileCtrl.$inject = ['MemesService'];
-function memeTileCtrl(MemesService) {
+function memeTileCtrl() {
   this.addToFavourites = function(id) {
-    MemesService.addToFavourites(id);
-    console.log(MemesService.getFavourites());
+    this.onAddClick({ id });
+  }
+
+  this.removeFromFavourites = function(id) {
+    this.onRemoveClick({ id });
   }
 }

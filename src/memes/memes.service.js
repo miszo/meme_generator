@@ -22,7 +22,13 @@ function memesService($http, $q) {
     if (idOnList === -1) {
       this.favouritesList.push(id);
     }
-    console.log(this.favouritesList);
+  }
+
+  this.removeFromFavourites = function(id) {
+    const idOnList = this.favouritesList.findIndex(fav => fav === id)
+    if (idOnList !== -1) {
+      this.favouritesList.splice(idOnList, 1);
+    } 
   }
 
   this.getFavourites = function() {
